@@ -204,4 +204,11 @@
         </plugins>
     </build>
 
+    <modules>
+        <module>order-service</module>
+        <module>notifications-service</module>
+        <module>workshop-service</module>
+    </modules>
+
+
 </project>
