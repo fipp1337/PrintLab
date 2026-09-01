@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: notifications-service
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/print-lab}
+    username: ${SPRING_DATASOURCE_USERNAME:myUser}
+    password: ${SPRING_DATASOURCE_PASSWORD:myPass}
+    driver-class-name: org.postgresql.Driver
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+      timeout: 2000ms
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID:300236290901-aolgnu4p100p3g30kmeciak45e81996h.apps.googleusercontent.com}
+            client-secret: ${GOOGLE_CLIENT_SECRET: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}
+            scope:
+              - email
+              - profile
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+    default-schema: notify
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+store:
+  jwt:
+    secret: ${STORE_JWT_SECRET:print-lab-academy-hebron-jwt-secret-key-min-32-characters-long}
+    expiration-ms: ${STORE_JWT_EXPIRATION_MS:86400000}
+    refresh-expiration-ms: ${STORE_JWT_REFRESH_EXPIRATION_MS:2592000000}
+
+server:
+  port: 8082
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss} %-5level [%logger{36}] - %msg%n"
+  level:
+    root: INFO
+    com.print-lab.notifications-service: INFO
+    org.hibernate.SQL: WARN
+    org.hibernate.orm.jdbc.bind: WARN
+    org.springframework.orm.jpa: WARN
+    org.springframework.security: WARN
+    org.liquibase: INFO

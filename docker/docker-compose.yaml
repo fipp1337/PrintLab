@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  application:
+    image: print-lab
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: print-lab
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPass
+      POSTGRES_DB: print-lab
+    ports:
+      - "5432:5432"
+    volumes:
+      - print_lab_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-print-lab
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_print_lab_data:/data
+    command: redis-server --timeout 2000
+
+volumes:
+  print_lab_data:
+    name: postgres_print_lab_data
+  redis_print_lab_data:
+    name: redis_print_lab_data_data
