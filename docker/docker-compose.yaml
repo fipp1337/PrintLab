@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   application:
     image: print-lab
     ports:
@@ -10,6 +11,17 @@ services:
     depends_on:
       - postgres
       - redis
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8089:8080" # Будет доступен в браузере по адресу http://localhost:8089
+    environment:
+        # Настраиваем подключение к нашему контейнеру kafka
+      DYNAMIC_CONFIG_ENABLED: 'true'
+      KAFKA_CLUSTERS_0_NAME: local-cluster
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
 
   postgres:
     image: postgres:16-alpine
