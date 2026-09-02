@@ -40,7 +40,7 @@ spring:
 
 store:
   jwt:
-    secret: ${STORE_JWT_SECRET:hansen-village-academy-hebron-jwt-secret-key-min-32-characters-long}
+    secret: ${STORE_JWT_SECRET:print-lab-academy-hebron-jwt-secret-key-min-32-characters-long}
     expiration-ms: ${STORE_JWT_EXPIRATION_MS:86400000}
     refresh-expiration-ms: ${STORE_JWT_REFRESH_EXPIRATION_MS:2592000000}
 
@@ -58,8 +58,3 @@ logging:
     org.springframework.orm.jpa: WARN
     org.springframework.security: WARN
     org.liquibase: INFO
-
-  servlet:
-    multipart:
-      max-file-size: 3MB
-      max-request-size: 3MB
