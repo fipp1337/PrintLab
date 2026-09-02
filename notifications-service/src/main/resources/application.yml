@@ -2,6 +2,9 @@ spring:
   application:
     name: notifications-service
 
+  kafka:
+    bootstrap-servers: localhost:9092
+
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/print-lab}
     username: ${SPRING_DATASOURCE_USERNAME:myUser}
@@ -28,7 +31,8 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     enabled: true
-    default-schema: notify
+    default-schema: orders
+    liquibase-schema: orders
 
   jpa:
     hibernate:
