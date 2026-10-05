@@ -3,7 +3,7 @@ package com.printlab.orderservice.entity;
 public enum OrderStatus {
     NEW,
     QUEUED,
-    CANCELED,
+    CANCELLED,
     PRINTING,
     FAILED,
     DONE

@@ -13,6 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Student {
+    @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;

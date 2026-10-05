@@ -6,7 +6,7 @@ CREATE SCHEMA IF NOT EXISTS orders;
 SET search_path TO orders;
 
 create table students (
-  id          BIGSERIAL PRIMARY KEY,
+  id          UUID PRIMARY KEY,
   email       VARCHAR(255) NOT NULL UNIQUE,
   name        VARCHAR(255) NOT NULL,
   role        VARCHAR(255) NOT NULL
