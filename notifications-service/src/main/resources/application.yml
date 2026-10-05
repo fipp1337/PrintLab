@@ -31,8 +31,8 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     enabled: true
-    default-schema: orders
-    liquibase-schema: orders
+    default-schema: notify
+    liquibase-schema: notify
 
   jpa:
     hibernate:
