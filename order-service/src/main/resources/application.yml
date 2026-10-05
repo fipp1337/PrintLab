@@ -7,8 +7,8 @@ spring:
 
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/print-lab}
-    username: ${SPRING_DATASOURCE_USERNAME:myUser}
-    password: ${SPRING_DATASOURCE_PASSWORD:myPass}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   data:
@@ -22,8 +22,8 @@ spring:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CLIENT_ID:300236290901-aolgnu4p100p3g30kmeciak45e81996h.apps.googleusercontent.com}
-            client-secret: ${GOOGLE_CLIENT_SECRET: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}
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
             scope:
               - email
               - profile
@@ -44,7 +44,7 @@ spring:
 
 store:
   jwt:
-    secret: ${STORE_JWT_SECRET:print-lab-academy-hebron-jwt-secret-key-min-32-characters-long}
+    secret: ${STORE_JWT_SECRET}
     expiration-ms: ${STORE_JWT_EXPIRATION_MS:86400000}
     refresh-expiration-ms: ${STORE_JWT_REFRESH_EXPIRATION_MS:2592000000}
 
